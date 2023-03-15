@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- 
+This is a local html file, which serves as a Test
+for the CORS permissions,
+using it as follows:
+1. Creating a local server with the specified port:
+  python -m http.server 9000
+2. In the browser open:
+  http://localhost:9000/cors_test.html
+3. Refreshing the page, and openning the console to see if the "GET" access is permitted or denied.
+
+-->
+<html>
+  <head>
+    <title>CORS Test</title>
+  </head>
+  <body>
+    <h1>CORS Test</h1>
+    <script>
+      fetch('http://localhost:4000/login', {
+        method: 'GET',
+        mode: 'cors'
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+    </script>
+  </body>
+</html>
